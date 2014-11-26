@@ -17,13 +17,14 @@ Write RSpec tests to specify the behavior of the following methods of the `Set` 
 - `new(array)` - Instantiate a new set from an optional array
 - `add(element)` - Add an element to the receiver, if it's already included do nothing
 - `remove(element)` - Remove an element if present in the receiver
-- `iterate{ |element| block }` - iterate through all of the elements of the receiver
+  `contains?(element)` - Answers whether or not the receiver contains the element
+- `iterate{ |element| block }` - Iterate through all of the elements of the receiver
 
 Remember, a set can have no duplicate elements.
 
 ###Release 1: Implement `Set`
 
-Implement the methods from the previous release using your `ResizableArray` class. Feel free to add methods to the `ResizableArray` class to assist you in implementing `Set`.  Do _not_ use a `Hash` object in your implementation.
+Implement the methods from the previous release.  Use your `ResizableArray` class to hold the state of a `Set`. Feel free to add methods to the `ResizableArray` class to assist you in implementing `Set`.  Do _not_ use a `Hash` object in your implementation.
 
 ###Release 2: Define set operations
 
