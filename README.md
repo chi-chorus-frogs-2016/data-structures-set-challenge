@@ -1,46 +1,45 @@
-# Set
+# Sets
 
-A set is an unordered collection where all of the contained elements are unique from one another.  Put another way a set can only contain one reference to any other object.
+Like a List, a [Set](http://en.wikipedia.org/wiki/Set_%28abstract_data_type%29) is a collection of elements. Sets have two key characteristics that make them stand apart from other Collection types like List.
 
+ * **Sets are unordered**: Regardless of how data enters a Set, the ordering of its elements is _not_ guaranteed.
+ * **Sets contain only unique elements**: There are no duplicates in a Set. If you add the string "hello" to a Set twice, there will only be one element ("hello") inside of it.
 
 ## Why is this important?
 
-The notion of sets comes directly from set theory in math, and is profoundly useful in computing.  Sets can me combine with each other using set operations such as union and intersection.  These operations should be familiar to you from SQL.
+The notion of Sets comes directly from [Set Theory](http://en.wikipedia.org/wiki/Set_theory) in math. Sets let us reason about collections of data as first class citizens themselves.
 
-##Releases
+If you asked me to tell you all the living things in the world I _could_ start enumerating everything living being on Earth. Alternatively, I could treat these categories as Sets. I could say "the set of living things is the union of the flora and fauna sets".
 
-###Release 0: Write tests
+You're already familiar with classic Set operations like `union` and `intersection` from your experience with SQL. You've produced _subsets_ of arrays in Ruby using `#select` or `#filter`. You might have even used Ruby's `Hash` _as_ a set by relying on the fact that setting the same key in a Hash twice is idempotent.
 
-Write RSpec tests to specify the behavior of the following methods of the `Set` class.
+Finally, Sets can be much faster for specific operations than a List. If you need to only check for _membership_ in a collection, a Set is probably faster than a List. Sets don't have the overhead of needing to access elements by index or keep them in order.
 
-####Interface
-- `new(array)` - Instantiate a new set from an optional array
-- `add(element)` - Add an element to the receiver, if it's already included do nothing
-- `remove(element)` - Remove an element if present in the receiver
-  `contains?(element)` - Answers whether or not the receiver contains the element
-- `iterate{ |element| block }` - Iterate through all of the elements of the receiver
+## Release 1: Implement `MySet`
 
-Remember, a set can have no duplicate elements.
+Implement and write RSpec tests for a `MySet` class that conforms to the following interface:
 
-###Release 1: Implement `Set`
+### Interface
+- `MySet#new()`: Instantiate a new empty Set.
+- `MySet#add(element)`: Add an element to the set (if necessary)
+- `MySet#remove(element)`: Remove `element` from the set if it's present
+  `MySet#contains?(element)`: Answer whether or not `element` is in the set
+- `MySet#iterate{ |element| block }`: Iterate through all of the elements of the receiver
+- `MySet#size`: Return the size of the set
 
-Implement the methods from the previous release.  Use your `ResizableArray` class to hold the state of a `Set`. Feel free to add methods to the `ResizableArray` class to assist you in implementing `Set`.  Do _not_ use a `Hash` object in your implementation.
+Pick one of _your_ existing data structures to implement `MySet` under the hood. Justify the structure you choose in the comments.
 
-###Release 2: Define set operations
+## Release 2: Set Operations
 
-Write RSpec tests to specify the behavior of the following set operation methods.
+We have the basics, but let's expand our Set class to include classic Set operations.
 
-- `union(set)` - Answers a new set that is the union of the receiver and param
-- `intersection(set)` - Answers a new set that is the intersection of the receiver and param
-- `difference(set)` - Answers a new set that is the difference between the receiver and param
-- `subset?(set)` - Answers whether or not the param is a subset of the receiver
+Implement and write RSpec tests for the following methods:
 
-Be sure to include tests for operations involving empty sets.
+### Interface (cont.)
 
-###Release 3: Implement set operations
+- `MySet#union(other_set)`: Return a new set that is the union of this set and `other_set`
+- `MySet#intersection(other_set)`: Return a new set that is the intersection of this set and `other_set`
+- `MySet#difference(other_set)`: Return a new set that contains this elements in the set that aren't in `other_set`
+- `MySet#subset?(other_set)`: Answers whether or not `other_set` is a subset of this set
 
-Implement the methods from the previous release.
-
-##Resources
-
-* [Wikipedia: Set data type](http://en.wikipedia.org/wiki/Set_%28abstract_data_type%29)
+Be sure to include tests for operations involving empty sets!
