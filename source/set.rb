@@ -1,3 +1,3 @@
-def Set
+class Set
 
 end
