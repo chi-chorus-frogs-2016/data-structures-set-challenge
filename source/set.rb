@@ -1,3 +1,3 @@
-class Set
+class MySet
 
 end
