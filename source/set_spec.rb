@@ -1,5 +1,5 @@
 require_relative 'set'
 
-describe Set do
+describe MySet do
 
 end
