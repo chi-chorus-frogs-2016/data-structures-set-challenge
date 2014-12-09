@@ -13,7 +13,7 @@ If you asked me to tell you all the living things in the world I _could_ start e
 
 You're already familiar with classic Set operations like `union` and `intersection` from your experience with SQL. You've produced _subsets_ of arrays in Ruby using `#select` or `#filter`. You might have even used Ruby's `Hash` _as_ a set by relying on the fact that setting the same key in a Hash twice is idempotent.
 
-Finally, Sets can be much faster for specific operations than a List. If you need to only check for _membership_ in a collection, a Set is probably faster than a List. Sets don't have the overhead of needing to access elements by index or keep them in order.
+Finally, Sets can be much faster for specific operations than a List. Most implementations of Sets (but probably not yours) offer a constant-time membership check.
 
 ## Release 1: Implement `MySet`
 
